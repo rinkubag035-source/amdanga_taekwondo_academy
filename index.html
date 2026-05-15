@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amdanga Taekwondo Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --dark:#020817;
+    --navy:#071a3d;
+    --gold:#d4a63d;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--dark);
+    color:white;
+    font-family:Roboto,sans-serif;
+    overflow-x:hidden;
+    animation:pageFade 1.2s ease;
+}
+
+@keyframes pageFade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--gold);
+}
+
+/* LOADER */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#020817;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    animation:fadeOut 1s ease 2s forwards;
+}
+
+.loader-content{
+    text-align:center;
+}
+
+.loader-content img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:20px;
+}
+
+.loader-content h1{
+    font-family:Orbitron;
+    letter-spacing:5px;
+    font-size:24px;
+}
+
+@keyframes fadeOut{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+/* FLAG */
+
+.flag-strip{
+    height:4px;
+    background:linear-gradient(
+        to right,
+        orange 33%,
+        white 33% 66%,
+        green 66%
+    );
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    top:4px;
+    width:100%;
+    z-index:999;
+    background:rgba(2,8,23,0.6);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:5px 7%;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo img{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid rgba(255,255,255,0.15);
+    transition:0.4s;
+}
+
+.logo img:hover{
+    transform:scale(1.05) rotate(5deg);
+}
+
+.logo-text h1{
+    font-family:Orbitron;
+    font-size:18px;
+    letter-spacing:2px;
+}
+
+.logo-text p{
+    font-size:11px;
+    color:#b7b7b7;
+    margin-top:3px;
+}
+
+nav{
+    display:flex;
+    gap:22px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    position:relative;
+    letter-spacing:1px;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0%;
+    height:2px;
+    background:var(--gold);
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.72),rgba(0,0,0,0.72)),
+    url('https://wallpaperaccess.com/full/630467.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-content{
+    animation:heroZoom 1.5s ease;
+}
+
+@keyframes heroZoom{
+    from{
+        opacity:0;
+        transform:scale(0.9) translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.hero h1{
+    font-family:Orbitron;
+    font-size:90px;
+    letter-spacing:8px;
+}
+
+.hero h2{
+    margin-top:18px;
+    color:var(--gold);
+    font-weight:300;
+    letter-spacing:4px;
+}
+
+.hero p{
+    margin-top:22px;
+    font-size:18px;
+    color:#d1d5db;
+    line-height:1.9;
+}
+
+.hero-buttons{
+    margin-top:40px;
+}
+
+.hero-buttons a{
+    display:inline-block;
+    margin:10px;
+    padding:14px 34px;
+    border-radius:6px;
+    text-decoration:none;
+    transition:0.4s;
+    font-weight:600;
+}
+
+.btn1{
+    background:var(--gold);
+    color:black;
+}
+
+.btn2{
+    border:1px solid rgba(255,255,255,0.3);
+    color:white;
+}
+
+.btn1:hover,
+.btn2:hover{
+    transform:translateY(-5px);
+}
+
+/* COMMON */
+
+section{
+    padding:120px 9%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-family:Orbitron;
+    font-size:44px;
+    letter-spacing:4px;
+}
+
+.section-title p{
+    margin-top:15px;
+    color:#9ca3af;
+    line-height:1.9;
+}
+
+/* ABOUT */
+
+.about{
+    background:#050d1d;
+}
+
+.about-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    height:560px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.about-text h3{
+    font-size:42px;
+    line-height:1.5;
+    font-weight:300;
+}
+
+.about-text p{
+    margin-top:25px;
+    line-height:2;
+    color:#cbd5e1;
+}
+
+/* PHILOSOPHY */
+
+.philosophy-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.philosophy-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:18px;
+    transition:0.4s;
+}
+
+.philosophy-card:hover{
+    transform:translateY(-10px);
+}
+
+.philosophy-card h3{
+    color:var(--gold);
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+.philosophy-card p{
+    color:#cbd5e1;
+    line-height:2;
+}
+
+/* DISCIPLINE */
+
+.discipline{
+    background:#050d1d;
+}
+
+.discipline-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.discipline-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:18px;
+    transition:0.4s;
+}
+
+.discipline-card:hover{
+    transform:translateY(-10px);
+}
+
+.discipline-card h3{
+    margin-bottom:18px;
+    color:var(--gold);
+}
+
+.discipline-card p{
+    color:#cbd5e1;
+    line-height:2;
+}
+
+/* LEADERSHIP */
+
+.leadership-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.leader-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    transition:0.4s;
+}
+
+.leader-card:hover{
+    transform:translateY(-10px);
+}
+
+.leader-card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.leader-card h3{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.leader-card h4{
+    color:var(--gold);
+    margin-bottom:15px;
+    font-weight:400;
+}
+
+.leader-card p{
+    color:#cbd5e1;
+    line-height:1.9;
+}
+
+/* BELTS */
+
+.belt-row{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.belt{
+    width:170px;
+    height:90px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.white{background:white;color:black;}
+.yellow{background:#facc15;color:black;}
+.green{background:#22c55e;}
+.blue{background:#3b82f6;}
+.red{background:#ef4444;}
+.black{
+    background:black;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+/* CLASSES */
+
+.classes{
+    background:#050d1d;
+}
+
+.class-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.class-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:18px;
+    transition:0.4s;
+}
+
+.class-card:hover{
+    transform:translateY(-10px);
+}
+
+.class-card h3{
+    color:var(--gold);
+    margin-bottom:18px;
+}
+
+.class-card p{
+    color:#cbd5e1;
+    line-height:2;
+}
+
+/* RULES */
+
+.rules-box{
+    max-width:950px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.rule-item{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:22px 28px;
+    border-radius:14px;
+    color:#e2e8f0;
+    line-height:1.8;
+    transition:0.3s;
+}
+
+.rule-item:hover{
+    transform:translateX(8px);
+}
+
+/* GALLERY */
+
+.gallery {
+    background: #050d1d;
+    padding: 20px;
+}
+
+/* MASONRY STYLE GRID */
+.slide-track {
+    column-count: 4;       /* number of columns */
+    column-gap: 15px;
+}
+
+/* EACH IMAGE BOX */
+.slide {
+    break-inside: avoid;   /* prevents cutting */
+    margin-bottom: 15px;
+    background: #0b1a33;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* IMAGE */
+.slide img {
+    width: 100%;
+    height: auto;          /* keeps original aspect ratio */
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.slide:hover img {
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .slide-track {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-track {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-track {
+        column-count: 1;
+    }
+}
+
+/* FAQ */
+
+.faq-container{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.faq-item{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:16px;
+}
+
+.faq-item h3{
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.faq-item p{
+    color:#cbd5e1;
+    line-height:2;
+}
+
+/* ADMISSION */
+
+.admission-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.admission-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:18px;
+}
+
+.admission-card h3{
+    color:var(--gold);
+    margin-bottom:20px;
+}
+
+.admission-card p{
+    color:#cbd5e1;
+    line-height:2;
+}
+
+/* QUOTE */
+
+.quote{
+    height:60vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.72),rgba(0,0,0,0.72)),
+    url('https://images.squarespace-cdn.com/content/v1/595159032994ca0a849de47a/1503023635235-GUNGC3UB2M7XD344D0HK/Master+Taekwondo+Plymouth+Meeting+Karate.jpg?format=2500w');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.quote h2{
+    font-size:48px;
+    line-height:1.8;
+    font-weight:300;
+}
+
+/* FOOTER */
+
+footer{
+    background:#020817;
+    padding:80px 9%;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:50px;
+}
+
+.footer-container h3{
+    margin-bottom:25px;
+}
+
+.footer-container p{
+    color:#9ca3af;
+    line-height:2;
+}
+
+.copy{
+    text-align:center;
+    margin-top:60px;
+    padding-top:30px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    color:#777;
+}
+
+/* TOP BUTTON */
+
+.top-btn{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:50px;
+    height:50px;
+    background:var(--gold);
+    color:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    text-decoration:none;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:48px;
+        letter-spacing:4px;
+    }
+
+    .hero h2{
+        font-size:18px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .about-container{
+        grid-template-columns:1fr;
+    }
+
+    .about img{
+        height:420px;
+    }
+
+    .quote h2{
+        font-size:30px;
+        padding:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- LOADER -->
+
+<div id="loader">
+
+<div class="loader-content">
+
+<img src="D:\Animesh\code\images\ata.jpg">
+
+<h1>AMDANGA TAEKWONDO ACADEMY</h1>
+<br>
+<div>
+<h4><i>-: Empowering Students Through Taekwondo :-</i></h4>
+</div>
+</div>
+
+</div>
+
+<!-- FLAG -->
+
+<div class="flag-strip"></div>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<img src="D:\Animesh\code\images\ata.jpg">
+
+<div class="logo-text">
+
+<h1>AMDANGA TAEKWONDO ACADEMY</h1>
+
+<p>DISCIPLINE • RESPECT • POWER</p>
+
+</div>
+
+</div>
+
+<nav>
+
+<a href="#about">ABOUT</a>
+<a href="#instructor">LEADERSHIP</a>
+<a href="#classes">CLASSES</a>
+<a href="#rules">RULES</a>
+<a href="#admission">ADMISSION</a>
+<a href="#gallery">GALLERY</a>
+<a href="#philosophy">PHILOSOPHY</a>
+<a href="#discipline">DISCIPLINE</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">CONTACT</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>TAEKWONDO</h1>
+
+<h2>THE WAY OF DISCIPLINE</h2>
+
+<p>
+Train Your Mind Before Your Body.<br>
+Build Confidence, Respect, Focus & Strength Through Martial Arts.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#about" class="btn1">EXPLORE</a>
+
+<a href="#gallery" class="btn2">GALLERY</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<div class="section-title">
+
+<h2>WHAT IS TAEKWONDO</h2>
+
+<p>
+A Korean martial art focused on discipline, respect, self-defense and character building.
+</p>
+
+</div>
+
+<div class="about-container">
+
+<img src="D:\Animesh\code\images\bio.png">
+
+<div class="about-text">
+
+<h3>
+More Than Martial Arts.  
+A Way Of Life.
+</h3>
+<br>
+<h2>About Our Academy</h2><br>
+<p> 
+
+<h2>Welcome to Amdanga Taekwondo Academy</h2>
+<br>
+
+<div><b>A place where discipline, confidence, strength, and respect are built through the art of  Taekwondo. Our academy is dedicated to training students of all ages with professional guidance, positive values, and a strong spirit of martial arts.</b>
+</div>
+<br>
+<div>
+<b>
+At Amdanga Taekwondo Academy, we believe Taekwondo is not only a sport but also a way of life. We focus on improving physical fitness, self-defense skills, mental strength, concentration, and self-confidence in every student. Our training helps students become disciplined, active, and responsible individuals both inside and outside the training ground.</b>
+</div>
+ <br>
+<div>
+<b>Our academy encourages students to develop courage, respect, teamwork, and leadership qualities while representing the spirit of Taekwondo with pride.
+
+With passionate instructors and a supportive environment, Amdanga Taekwondo Academy continues to inspire young martial artists to achieve excellence and represent their academy with honor.
+
+Train with Discipline. Fight with Respect. Rise with Confidence. </b>
+</div>
+
+</p>
+</div>
+
+</div>
+
+</section>
+<!-- LEADERSHIP -->
+
+<section class="instructor" id="instructor">
+
+<div class="section-title">
+
+<h2>ACADEMY LEADERSHIP</h2>
+
+<p>
+The guiding pillars of Amdanga Taekwondo Academy.
+</p>
+
+</div>
+
+<div class="leadership-grid">
+
+<div class="leader-card">
+
+<img src="AVIJIT DA IMAGE">
+
+<h3>ABHIJIT DEY</h3>
+
+<h4>President</h4>
+
+<p><b>
+INFO</b>
+</p>
+
+</div>
+
+<div class="leader-card">
+
+<img src="IRFAN SIR">
+
+<h3>IRFAN MALLICK</h3>
+
+<h4>Secretary</h4>
+
+<p><b>
+1ST DAN Black Belt (WT, Kukkiwon)</b>
+</p>
+
+</div>
+
+<div class="leader-card">
+
+<img src="AMIT SIR">
+
+<h3>AMIT BHUIYA</h3>
+
+<h4>Coach</h4>
+
+<p><b>
+4TH DAN Black Belt , NIS Coach</b>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CLASSES -->
+
+<section class="classes" id="classes">
+
+<div class="section-title">
+
+<h2>TRAINING CLASSES</h2>
+
+<p>
+Professional training schedules for all students.
+</p>
+
+</div>
+
+<div class="class-grid">
+
+<div class="class-card">
+
+<h3>Beginner Class</h3>
+
+<p>
+Basic kicks, fitness, balance and discipline training for new students.
+<br><br>
+
+⏰ Saturday • Sunday <br>
+6:00 AM – 8:00 AM
+</p>
+
+</div>
+
+<div class="class-card">
+
+<h3>Intermediate Class</h3>
+
+<p>
+Advanced techniques, poomsae, sparring and flexibility development.
+<br><br>
+
+⏰ Saturday • Sunday <br>
+6:00 AM – 8:00 AM
+</p>
+
+</div>
+
+<div class="class-card">
+
+<h3>Advanced Class</h3>
+
+<p>
+Black belt preparation, tournament sparring and advanced self-defense.
+<br><br>
+
+⏰ Saturday • Sunday <br>
+6:00 AM – 8:00 AM
+</p>
+
+</div>
+
+<div class="class-card">
+
+<h3>Fitness & Self Defense</h3>
+
+<p>
+Improve stamina, confidence and practical self-defense techniques.
+<br><br>
+
+⏰ Saturday • Sunday <br>
+6:00 AM – 8:00 AM
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- RULES -->
+
+<section id="rules">
+
+<div class="section-title">
+
+<h2>RULES & REGULATIONS</h2>
+
+<p>
+Discipline and respect are the foundation of Taekwondo.
+</p>
+
+</div>
+
+<div class="rules-box">
+
+<div class="rule-item">1. Discipline is mandatory for every student.</div>
+
+<div class="rule-item">2. Respect instructors, seniors on the Dojang.</div>
+
+<div class="rule-item">3. Obey the coach during practice .</div>
+
+<div class="rule-item">4. Leaving Dojang without the instructor's consent is offence.</div>
+
+<div class="rule-item">5. Joining another institute without the consent of the authority is offence.</div>
+
+<div class="rule-item">6. Try to serve the academy whenever called for.</div>
+</section>
+
+<!-- ADMISSION -->
+
+<section id="admission">
+
+<div class="section-title">
+
+<h2>ADMISSION INFO</h2>
+
+<p>
+Join the journey of discipline and strength.
+</p>
+
+</div>
+
+<div class="admission-grid">
+
+<div class="admission-card">
+
+<h3>Eligibility</h3>
+
+<p>
+• Boys & Girls Can Join<br>
+• Minimum Age: 5 Years<br>
+• Beginners Welcome
+</p>
+
+</div>
+
+<div class="admission-card">
+
+<h3>Required Documents</h3>
+
+<p>
+• Passport Size Photo<br>
+• Aadhaar Card Copy<br>
+• Birth Certificate Copy
+</p>
+
+</div>
+
+<div class="admission-card">
+
+<h3>Training Fees</h3>
+
+<p>
+• Monthly Fee : ₹500<br>
+• Admission Fee : ₹1000<br>
+• Belt Exam Fee Separate
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="gallery" id="gallery">
+
+<div class="section-title">
+
+<h2>ACHIVMENT GALLERY</h2>
+
+<p>
+Spirit • Focus • Technique
+</p>
+
+</div>
+
+<div class="slider">
+
+<div class="slide-track">
+
+<div class="slide">
+<img src="D:\Animesh\code\images\img1.jpg">
+</div>
+
+<div class="slide">
+<img src="D:\Animesh\code\images\img3.jpg">
+</div>
+
+<div class="slide">
+<img src="D:\Animesh\code\images\img4.jpg">
+</div>
+
+<div class="slide">
+<img src="D:\Animesh\code\images\img5.jpg">
+</div>
+
+
+<div class="slide">
+<img src="D:\Animesh\code\images\img8.jpg">
+</div>
+
+<div class="slide">
+<img src="D:\Animesh\code\images\img10.jpg">
+</div>
+
+<div class="slide">
+<img src="D:\Animesh\code\images\img13.jpg">
+</div>
+
+<div class="slide">
+<img src="D:\Animesh\code\images\img14.jpg">
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PHILOSOPHY -->
+
+<section id="philosophy">
+
+<div class="section-title">
+
+<h2>TAEKWONDO PHILOSOPHY</h2>
+
+<p>
+The moral principles that guide every Taekwondo student.
+</p>
+
+</div>
+
+<div class="philosophy-grid">
+
+<div class="philosophy-card">
+
+<h3>Courtesy</h3>
+
+<p>
+Students learn to respect instructors, seniors, parents and fellow students. Courtesy creates humility, good behavior and a positive martial arts environment.
+</p>
+
+</div>
+
+<div class="philosophy-card">
+
+<h3>Integrity</h3>
+
+<p>
+Taekwondo teaches honesty and strong moral character. A true martial artist always chooses truth, fairness and responsibility in every situation.
+</p>
+
+</div>
+
+<div class="philosophy-card">
+
+<h3>Perseverance</h3>
+
+<p>
+Success requires patience and hard work. Students are trained to never give up during difficult situations, training or competitions.
+</p>
+
+</div>
+
+<div class="philosophy-card">
+
+<h3>Self Control</h3>
+
+<p>
+A martial artist must control emotions, anger and actions. Self-control helps students stay calm, disciplined and focused in life.
+</p>
+
+</div>
+
+<div class="philosophy-card">
+
+<h3>Indomitable Spirit</h3>
+
+<p>
+Taekwondo builds courage and confidence. Students learn to stand strong against fear, failure and challenges with determination.
+</p>
+
+</div>
+
+<div class="philosophy-card">
+
+<h3>Respect For Humanity</h3>
+
+<p>
+Martial arts should never be used for bullying or violence. Taekwondo promotes peace, kindness and helping others in society.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- DISCIPLINE -->
+
+<section class="discipline" id="discipline">
+
+<div class="section-title">
+
+<h2>DISCIPLINE TRAINING</h2>
+
+<p>
+Discipline is the foundation of every successful martial artist.
+</p>
+
+</div>
+
+<div class="discipline-grid">
+
+<div class="discipline-card">
+
+<h3>Physical Discipline</h3>
+
+<p>
+Students follow regular warmups, stretching, stamina exercises and kicking drills to build strength, flexibility and endurance.
+</p>
+
+</div>
+
+<div class="discipline-card">
+
+<h3>Mental Discipline</h3>
+
+<p>
+Taekwondo improves focus, patience and concentration. Students are trained to remain calm under pressure and think clearly.
+</p>
+
+</div>
+
+<div class="discipline-card">
+
+<h3>Time Discipline</h3>
+
+<p>
+Punctuality is very important in martial arts. Students learn to attend classes regularly and maintain consistency in training.
+</p>
+
+</div>
+
+<div class="discipline-card">
+
+<h3>Behavior Discipline</h3>
+
+<p>
+Respectful behavior inside and outside the dojang is mandatory. Students are expected to maintain good manners and positive attitudes.
+</p>
+
+</div>
+
+<div class="discipline-card">
+
+<h3>Training Discipline</h3>
+
+<p>
+Students practice techniques repeatedly with dedication and patience to achieve perfection and improvement over time.
+</p>
+
+</div>
+
+<div class="discipline-card">
+
+<h3>Life Discipline</h3>
+
+<p>
+The discipline learned in Taekwondo helps students succeed in school, career and personal life through confidence and responsibility.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- FAQ -->
+
+<section id="faq">
+
+<div class="section-title">
+
+<h2>FREQUENTLY ASKED QUESTIONS</h2>
+
+<p>
+Common questions students and parents ask before joining.
+</p>
+
+</div>
+
+<div class="faq-container">
+
+<div class="faq-item">
+<h3>1. What is the minimum age to join?</h3>
+<p>Children from 5 years old can join beginner classes.</p>
+</div>
+
+<div class="faq-item">
+<h3>2. Can beginners join without experience?</h3>
+<p>Yes. Complete beginners are welcome in our academy.</p>
+</div>
+
+<div class="faq-item">
+<h3>3. Is Taekwondo safe for children?</h3>
+<p>Yes. Training is conducted under supervision with proper safety rules.</p>
+</div>
+
+<div class="faq-item">
+<h3>4. How many days per week should students train?</h3>
+<p>Students are encouraged to attend at least 3 classes per week for better progress.</p>
+</div>
+
+<div class="faq-item">
+<h3>5. Do girls and boys train together?</h3>
+<p>Yes. Both boys and girls train together with equal opportunities.</p>
+</div>
+
+<div class="faq-item">
+<h3>6. Is Taekwondo good for fitness?</h3>
+<p>Yes. It improves stamina, flexibility, balance and overall physical fitness.</p>
+</div>
+
+<div class="faq-item">
+<h3>7. How long does it take to earn a black belt?</h3>
+<p>It depends on regular practice and examination performance. Usually several years of consistent training are required.</p>
+</div>
+
+<div class="faq-item">
+<h3>8. Are competitions mandatory?</h3>
+<p>No. Competitions are optional, but students are encouraged to participate for experience and confidence.</p>
+</div>
+
+<div class="faq-item">
+<h3>9. What should students wear during training?</h3>
+<p>Students should wear a proper Taekwondo uniform (Dobok).</p>
+</div>
+
+<div class="faq-item">
+<h3>10. Does Taekwondo teach self-defense?</h3>
+<p>Yes. Students learn practical self-defense techniques and confidence building.</p>
+</div>
+
+<div class="faq-item">
+<h3>11. Are belt exams conducted regularly?</h3>
+<p>Yes. Belt examinations are organized according to student progress and performance.</p>
+</div>
+
+<div class="faq-item">
+<h3>12. Can parents watch the classes?</h3>
+<p>Yes. Parents may observe training sessions from designated areas.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUOTE -->
+
+<section class="quote">
+
+<h2>
+“Discipline Is The Bridge  
+Between Goals And Achievement.”
+</h2>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+<div class="footer-container">
+
+<div>
+
+<h3>About</h3>
+
+<p>
+Amdanga Taekwondo Academy promotes discipline, respect, fitness and martial arts culture for students of all ages.
+</p>
+
+</div>
+
+<div>
+
+<h3>Core Values</h3>
+
+<p>
+Courtesy<br>
+Integrity<br>
+Perseverance<br>
+Self Control<br>
+Indomitable Spirit
+</p>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<p>
+Amdanga, West Bengal<br><br>
+amdangataekwondoacademy@gmail.com
+</p>
+
+</div>
+
+</div>
+
+<div class="copy">
+© 2026 Amdanga Taekwondo Academy — All Rights Reserved
+</div>
+
+</footer>
+
+<!-- TOP BUTTON -->
+
+<a href="#" class="top-btn">↑</a>
+
+</body>
+
+</html>
