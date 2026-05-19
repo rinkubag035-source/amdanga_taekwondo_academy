@@ -1483,77 +1483,144 @@ Mobile Number<br></b>
 <a href="#" class="top-btn">↑</a>
 <script>
 
-// ==============================
-// RIGHT CLICK BLOCK
-// ==============================
-document.addEventListener('contextmenu', e => e.preventDefault());
+// =====================================
+// DISABLE RIGHT CLICK
+// =====================================
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+});
 
-// ==============================
-// COPY / SELECT BLOCK
-// ==============================
-document.addEventListener('copy', e => e.preventDefault());
-document.addEventListener('cut', e => e.preventDefault());
-document.addEventListener('paste', e => e.preventDefault());
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('dragstart', e => e.preventDefault());
+// =====================================
+// DISABLE COPY / CUT / PASTE
+// =====================================
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+document.addEventListener("paste", e => e.preventDefault());
 
-// ==============================
-// KEYBOARD SHORTCUT BLOCK
-// ==============================
-document.addEventListener('keydown', function(e) {
+// =====================================
+// DISABLE TEXT SELECTION
+// =====================================
+document.addEventListener("selectstart", e => e.preventDefault());
 
-    // Ctrl combinations
+// =====================================
+// DISABLE IMAGE DRAGGING
+// =====================================
+document.addEventListener("dragstart", e => e.preventDefault());
+
+// =====================================
+// BLOCK KEYBOARD SHORTCUTS
+// =====================================
+document.addEventListener("keydown", function(e) {
+
+    // Ctrl Keys
     if (
-        (e.ctrlKey && ['c','u','s','a','p'].includes(e.key.toLowerCase())) ||
-        (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase()))
+        e.ctrlKey &&
+        (
+            e.key === "c" ||
+            e.key === "u" ||
+            e.key === "s" ||
+            e.key === "a" ||
+            e.key === "p"
+        )
+    ) {
+        e.preventDefault();
+    }
+
+    // Ctrl + Shift + I/J/C
+    if (
+        e.ctrlKey &&
+        e.shiftKey &&
+        (
+            e.key === "I" ||
+            e.key === "J" ||
+            e.key === "C"
+        )
     ) {
         e.preventDefault();
     }
 
     // F12
-    if (e.key === 'F12') {
+    if (e.key === "F12") {
         e.preventDefault();
     }
 
     // Print Screen
-    if (e.key === 'PrintScreen') {
+    if (e.key === "PrintScreen") {
 
-        navigator.clipboard.writeText('');
+        navigator.clipboard.writeText("");
 
-        alert('Screenshots are disabled on this website.');
+        alert("Screenshots are blocked on this website.");
 
         e.preventDefault();
     }
+
 });
 
-// ==============================
-// SCREEN RECORD / TAB SWITCH BLUR
-// ==============================
-function hideContent() {
-    document.body.style.filter = "blur(20px)";
-}
+// =====================================
+// CREATE PROTECTION OVERLAY
+// =====================================
+const protectionOverlay = document.createElement("div");
 
-function showContent() {
-    document.body.style.filter = "none";
-}
+protectionOverlay.innerHTML = "SCREEN CAPTURE BLOCKED";
 
-// Blur when tab inactive
+protectionOverlay.style.position = "fixed";
+protectionOverlay.style.top = "0";
+protectionOverlay.style.left = "0";
+protectionOverlay.style.width = "100%";
+protectionOverlay.style.height = "100%";
+protectionOverlay.style.background = "black";
+protectionOverlay.style.color = "white";
+protectionOverlay.style.display = "none";
+protectionOverlay.style.justifyContent = "center";
+protectionOverlay.style.alignItems = "center";
+protectionOverlay.style.fontSize = "40px";
+protectionOverlay.style.fontWeight = "bold";
+protectionOverlay.style.zIndex = "999999";
+protectionOverlay.style.fontFamily = "Arial";
+
+document.body.appendChild(protectionOverlay);
+
+// =====================================
+// HIDE WEBSITE WHEN TAB CHANGES
+// =====================================
 document.addEventListener("visibilitychange", function() {
+
     if (document.hidden) {
-        hideContent();
+
+        protectionOverlay.style.display = "flex";
+        document.body.style.filter = "blur(20px)";
+
     } else {
-        showContent();
+
+        protectionOverlay.style.display = "none";
+        document.body.style.filter = "none";
+
     }
+
 });
 
-// Blur when window loses focus
-window.addEventListener("blur", hideContent);
-window.addEventListener("focus", showContent);
+// =====================================
+// DETECT WINDOW BLUR
+// (Snipping Tool / Recording Attempt)
+// =====================================
+window.addEventListener("blur", function() {
 
-// ==============================
+    protectionOverlay.style.display = "flex";
+    document.body.style.filter = "blur(20px)";
+
+});
+
+window.addEventListener("focus", function() {
+
+    protectionOverlay.style.display = "none";
+    document.body.style.filter = "none";
+
+});
+
+// =====================================
 // DEVTOOLS DETECTION
-// ==============================
-setInterval(function () {
+// =====================================
+setInterval(function() {
 
     let widthThreshold = window.outerWidth - window.innerWidth > 160;
     let heightThreshold = window.outerHeight - window.innerHeight > 160;
@@ -1563,34 +1630,39 @@ setInterval(function () {
         document.body.innerHTML = `
             <div style="
                 height:100vh;
+                width:100%;
+                background:black;
+                color:white;
                 display:flex;
                 justify-content:center;
                 align-items:center;
-                background:black;
-                color:white;
-                font-size:30px;
-                font-family:sans-serif;
+                font-size:35px;
+                font-family:Arial;
             ">
                 Developer Tools Detected
             </div>
         `;
+
     }
 
 }, 1000);
 
-// ==============================
-// IMAGE PROTECTION
-// ==============================
-document.querySelectorAll("img").forEach(img => {
-    img.setAttribute("draggable", "false");
-});
-
-// ==============================
-// DISABLE IFRAME EMBED
-// ==============================
+// =====================================
+// BLOCK IFRAME EMBEDDING
+// =====================================
 if (window.top !== window.self) {
     window.top.location = window.self.location;
 }
+
+// =====================================
+// DISABLE IMAGE INTERACTION
+// =====================================
+document.querySelectorAll("img").forEach(img => {
+
+    img.setAttribute("draggable", "false");
+    img.style.pointerEvents = "none";
+
+});
 
 </script>
 
